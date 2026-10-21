@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATH FC</title>
+<link rel="stylesheet" href="estilo.css">
+
+</head>
+
+<body>
+
+<div id="tela-inicial">
+    <div class="stars"></div>
+    <div class="card">
+
+        <div class="titulo-jogo">
+            <img class="bola-titulo" src="bola.png" alt="Bola do jogo" aria-label="Bola do jogo">
+            <h1>MATH FC</h1>
+        </div>
+        <p class="subtitle">Um jogo de matemática + futebol</p>
+        <p id="recordeDisplay" class="subtitle" style="display:none;"></p>
+
+        <p>Tipo de conta</p>
+        <select id="tipoConta">
+            <option value="1">Soma/Subtração</option>
+            <option value="2">Multiplicação</option>
+            <option value="3">Misto</option>
+        </select>
+
+        <p>Dificuldade</p>
+        <select id="dificuldade">
+            <option value="1">Fácil</option>
+            <option value="2">Normal</option>
+            <option value="3">Difícil</option>
+            <option value="4">Expert</option>
+        </select>
+
+        <p>Rodadas</p>
+        <input type="number" id="inputRodadas" value="10" min="1" max="20">
+
+        <div class="buttons-container">
+            <button class="btn-primary" onclick="prepararJogo(1)">🎮 1 Jogador</button>
+            <button class="btn-primary" onclick="prepararJogo(2)">👥 2 Jogadores</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="tela-nomes" style="display:none;">
+    <div class="card">
+        <h1>👥 Nomes dos Jogadores</h1>
+        <p class="subtitle">Quem vai jogar hoje?</p>
+
+        <p>Jogador 1</p>
+        <input type="text" id="nomeJogador1" placeholder="Jogador 1" maxlength="12">
+
+        <p>Jogador 2</p>
+        <input type="text" id="nomeJogador2" placeholder="Jogador 2" maxlength="12">
+
+        <div class="buttons-container">
+            <button class="btn-primary" onclick="confirmarNomes()">🚀 Começar</button>
+            <button class="btn-primary" style="background:linear-gradient(135deg,#555,#333);" onclick="document.getElementById('tela-nomes').style.display='none';">↩️ Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div id="topo">
+    <div class="stats-container">
+        <div id="placar" style="display:none;">
+            <div class="stat-box player-1">
+                <div class="player-badge">🔵 P1</div>
+                <span id="pontos1" class="score">0</span>
+            </div>
+            <div class="versus">VS</div>
+            <div class="stat-box player-2" id="caixaP2">
+                <div class="player-badge">🔴 P2</div>
+                <span id="pontos2" class="score">0</span>
+            </div>
+        </div>
+
+        <div id="indicadorTurno" class="indicador-turno" style="display:none;" aria-live="polite">
+            Vez de <strong id="nomeJogadorTurno">Jogador 1</strong>
+        </div>
+
+        <div id="combo" class="combo" style="display:none;">
+            🔥 Combo: <span id="comboCount">0</span>x
+        </div>
+
+        <div id="cronometro" style="display:none;" class="cronometro-box">
+            ⏱️ <span id="tempoAtual">30</span>s
+        </div>
+    </div>
+</div>
+
+<div id="conta" class="conta-display"></div>
+
+<div class="alternativas">
+    <button id="alt0" onclick="responder(0,1)"></button>
+    <button id="alt1" onclick="responder(1,1)"></button>
+    <button id="alt2" onclick="responder(2,1)"></button>
+</div>
+
+<div id="campo-wrapper">
+<div id="campo">
+
+    <div id="gol"></div>
+
+    <div id="goleiro">
+        <div class="cabeca"></div>
+        <div class="corpo"></div>
+    </div>
+
+    <div id="bola" aria-label="Bola de futebol">⚽</div>
+</div>
+</div>
+
+<div id="particulas"></div>
+<div id="mensagem" class="mensagem-grande"></div>
+
+<audio id="audio1" src="../audio/Audio%201.mp3" preload="auto"></audio>
+<audio id="audio2" src="../audio/Audio%202.mp3" preload="auto"></audio>
+<audio id="audio3" src="../audio/Audio%203.mp3" preload="auto"></audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>
